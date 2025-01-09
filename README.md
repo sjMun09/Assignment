@@ -332,7 +332,7 @@ while (true) {
         System.out.println("사칙연산 기호를 입력하세요 (+, -, *, /): ");
         char operatorChar = br.readLine().charAt(0);
         operator = OperatorType.fromChar(operatorChar);
-        break; // 올바른 연산자를 입력하면 루프 종료
+        break;
     } catch (IllegalArgumentException e) {
         System.out.println("잘못된 연산자입니다. +, -, *, / 중 하나를 입력하세요.");
     }
@@ -356,7 +356,7 @@ public class ArithmeticCalculator<T extends Number> {
             case MULTIPLY -> result = a * b;
             case DIVIDE -> {
                 if (b == 0) {
-                    throw new ArithmeticException("0으로 나눌 수 없습니다.");
+                    throw new ArithmeticException("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
                 }
                 result = a / b;
             }
@@ -382,7 +382,7 @@ public List<Double> getResultsGreaterThan(double threshold) {
 #### 4.1 테스트 시나리오
 - 잘못된 연산자 입력 테스트
 입력: &, x, #, (
-기대 결과: "유효하지 않은 연산자입니다" 메시지가 출력되고 다시 입력 요청.
+기대 결과: "잘못된 연산자입니다. +, -, *, / 중 하나를 입력하세요.: " 메시지가 출력되고 다시 입력 요청.
 
 - 다양한 숫자 타입 처리 테스트
 입력: 15.5 + 10.2
