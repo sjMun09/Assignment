@@ -12,7 +12,7 @@ public class App {
                 System.out.println("첫 번째 수를 입력하세요 (0포함): ");
                 double num1 = Double.parseDouble(br.readLine());
 
-                System.out.println("사칙연산 기호를 입력하세요: ");
+                System.out.println("사칙연산 기호를 입력하세요 (+, -, *, /): ");
                 char operatorChar = br.readLine().charAt(0);
                 OperatorType operator = OperatorType.fromChar(operatorChar);
 
@@ -40,7 +40,7 @@ public class App {
                     break;
                 }
             } catch (Exception e) {
-                System.out.println("오류 발생: " + e.getMessage());
+                System.out.println("잘못된 연산자입니다. +, -, *, / 중 하나를 입력하세요.: " + e.getMessage());
             }
         }
     }
