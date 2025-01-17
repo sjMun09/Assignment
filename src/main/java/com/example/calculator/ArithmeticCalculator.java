@@ -19,21 +19,21 @@ public class ArithmeticCalculator<T extends Number> {
         }
     }
 
-    public double calculate(T num1, T num2, OperatorType operator) {
-        double a = num1.doubleValue();
-        double b = num2.doubleValue();
+    public double calculate(T inputNum1, T inputNum2, OperatorType operator) {
+        double num1 = inputNum1.doubleValue();
+        double num2 = inputNum2.doubleValue();
         double result;
 
         switch (operator) {
-            case ADD -> result = a + b;
-            case SUBTRACT -> result = a - b;
-            case MULTIPLY -> result = a * b;
+            case ADD -> result = num1 + num2;
+            case SUBTRACT -> result = num1 - num2;
+            case MULTIPLY -> result = num1 * num2;
             case DIVIDE -> {
-                if (b == 0) {
+                if (num2 == 0) {
                     System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
                     return 0;
                 }
-                result = a / b;
+                result = num1 / num2;
             }
             default -> throw new IllegalArgumentException("유효하지 않은 연산자입니다.");
         }

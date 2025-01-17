@@ -1,5 +1,7 @@
 package com.example.calculator;
 
+import java.util.Arrays;
+
 public enum OperatorType {
     ADD('+'),
     SUBTRACT('-'),
@@ -18,12 +20,9 @@ public enum OperatorType {
     }
 
     public static OperatorType fromChar(char symbol) {
-        for (OperatorType type : values()) {
-            if (type.getSymbol() == symbol) {
-                return type;
-            }
-        }
-        throw new IllegalArgumentException("유효하지 않은 연산자입니다: " + symbol);
+        return Arrays.stream(values())
+                .filter(type -> type.getSymbol() == symbol)
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("유효하지 않은 연산자입니다: " + symbol));
     }
-
 }
